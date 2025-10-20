@@ -11,7 +11,7 @@ tl.to("#page1",{
     duration:0
 })
 tl.to("#page1",{
-    y:"20vh",
+    y:"10vh",
     duration:1,
     delay:1
 })
@@ -19,5 +19,8 @@ tl.to("#page1",{
     y:"0vh",
     rotate:360,
     scale:1,
-    duration:0.7
+    duration:0.7,
+    delay:1.4
 })
+
+gsap.set("#nav", { transformOrigin: "top center" });

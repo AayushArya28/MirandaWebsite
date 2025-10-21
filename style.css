@@ -482,57 +482,94 @@ body {
 }
 
 #page5 {
-    padding: 25px 0;
-    width: 100%;
+    width: 100vw;
+    /* ensures full screen width */
+    margin-left: calc(-1 * (100vw - 100%)/2);
+    /* fixes scrollbars from 100vw */
     background-color: #C4BCB3;
-    border-top: 1px solid #2f2f2f;
-    border-bottom: 1px solid #2f2f2f;
-
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    padding: 60px 100px;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-#page5::-webkit-scrollbar {
-    display: none;
-}
-
-#page5 h1 {
-    font-size: 100px;
-    font-family: domain;
-    font-weight: 100;
-    display: inline-block;
-    /* background-color: red; */
-    animation-timing-function: linear;
-    margin-right: 30px;
-    animation-name: scroll;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-
-#page5 h1 span {
-    font-family: canopee;
-    background-color: #1b1b1b;
-    color: #C4BCB3;
-    padding: 0 12px;
-}
-
-#page6 {
-    height: 100px;
+/* full-width top and bottom borders */
+#page5::before,
+#page5::after {
+    content: "";
+    position: absolute;
+    left: 0;
     width: 100%;
-    background-color: #C4BCB3;
+    height: 1px;
+    background-color: #222;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
+#page5::before {
+    top: 0;
+}
+
+#page5::after {
+    bottom: 0;
+}
+
+.award-box {
+    flex: 1;
+    min-width: 200px;
+    border-right: 1px solid #222;
+    padding: 0 30px;
+}
+
+.award-box:last-child {
+    border-right: none;
+}
+
+.award-box h3 {
+    font-family: "domain", serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #1C1C19;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.award-box h2 {
+    font-family: "canopee", serif;
+    font-size: 45px;
+    font-weight: 400;
+    color: #1C1C19;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.award-box h2 span {
+    font-size: 120px;
+    line-height: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #page5 {
+        flex-direction: column;
+        padding: 40px 20px;
     }
 
-    100% {
-        transform: translateX(calc(-100% - 34px));
+    .award-box {
+        border-right: none;
+        border-bottom: 1px solid #222;
+        padding: 20px 0;
     }
-}
 
-#page5:hover h1 {
-    animation-play-state: paused;
+    .award-box:last-child {
+        border-bottom: none;
+    }
+
+    .award-box h2 span {
+        font-size: 80px;
+    }
 }
